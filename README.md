@@ -37,11 +37,13 @@ All dependencies are included in `environment.yml` and `requirements.txt` file. 
 
 ```bash
 mamba env create --prefix ./env --file environment.yml --force
-
-# or 
+```
+or 
+```bash
 conda env create --prefix ./env --file environment.yml --force
-
-# If mamba do not exists then install it via
+```
+If mamba do not exists then install it via
+```bash
 conda activate base
 conda install mamba -n base -c conda-forge
 ```
