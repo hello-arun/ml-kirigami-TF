@@ -1,2 +1,0 @@
-# Add dependencies that need to be installed via pip
-autopep8

@@ -1,11 +1,13 @@
-name: ml-kirigami
+name: ml-kirigami-tf-2.6
 
 channels:
   - defaults
-
+  - conda-forge
 dependencies:
 # Mostly used Python libs
-  - python=3.9
+  - python
+  - autopep8
+  - black
   - pip
   - numpy
   - scipy
@@ -13,8 +15,7 @@ dependencies:
   - matplotlib
   - seaborn
   - pip:
-    - -r requirements.txt
-
+    - tensorflow
 # IPython modules
   - ipywidgets
   # - jupyterlab
