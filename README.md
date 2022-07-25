@@ -59,9 +59,6 @@ conda activate base
 mamba env update --prefix ./env --file environment.yml  --prune
 ```
 
-## To download 
-git clone https://github.com/phanakata/ML_for_kirigami_design.git
-
 ## Authors
 Paul Hanakata
 
@@ -103,4 +100,5 @@ If you use this package/code/dataset, build on  or find our research is useful f
 ## References
 * <a href="https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.2.042006" style="color:#268cd7">[1] **Paul Z. Hanakata**, E. D. Cubuk, D. K. Campbell, H.S. Park, *Phys. Rev. Research*, 2, 042006(R) (2020).</a>
 * <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.121.255304" style="color:#268cd7">[2] **Paul Z. Hanakata**, E. D. Cubuk, D. K. Campbell, H.S. Park, *Phys. Rev. Lett*, 121, 255304  (2018).</a>
+* [phanakata](https://github.com/phanakata/ML_for_kirigami_design.git)
 
