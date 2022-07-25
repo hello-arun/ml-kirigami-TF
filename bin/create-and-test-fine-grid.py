@@ -20,10 +20,12 @@ def makeFineGrid(kirigami_config, n_corse_x, n_corse_y, n_fine_x, n_fine_y):
         kirigami_config: Corse Kirigami config of size n_corse_x * n_corse_y
         return: Fine grid 1D array of size n_fine_x*n_fine_y
     """ 
-    zeros = np.array([1,1,1,0,0,0,1,1,1,1])[:,np.newaxis]
 
     fine_grid = np.ones((n_fine_x,n_fine_y))
     mx, my = n_fine_x//n_corse_x, n_fine_y//n_corse_y  # 10 16
+    zeros = np.array([1]*mx)[:,np.newaxis]
+    print(zeros.shape)
+    zeros[mx//3:2*mx//3+1]=0
 
     # ONLY MAKE CUTS inside the INNER REGION !!
     for index,num in enumerate(kirigami_config):
