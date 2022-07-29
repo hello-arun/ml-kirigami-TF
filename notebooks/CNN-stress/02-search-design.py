@@ -114,17 +114,17 @@ alldata_Random_excluded = np.delete(alldata_FG,sample_indices,axis=0)
 alldata_exluded = np.delete(alldata_FG,sample_indices,axis=0)
 print(alldata_Train.shape, alldata_exluded.shape)
 
-__FEATURES = len(alldata_Train[0])-3
-__PROP_INDEX = i_stress  # -3: Strain, -1: Stress 
-sample_indices = np.argpartition(alldata_FG[:,__PROP_INDEX],-num_samples)[-num_samples:]
-__AVG_TRUE_TOP = np.average(alldata_FG[:,__PROP_INDEX][sample_indices])
-print("No of featues:",__FEATURES,"\nProperty index:",__PROP_INDEX)
+NUM_FEATURES = len(alldata_Train[0])-3
+prop_index = i_stress  # -3: Strain, -1: Stress 
+sample_indices = np.argpartition(alldata_FG[:,prop_index],-num_samples)[-num_samples:]
+__AVG_TRUE_TOP = np.average(alldata_FG[:,prop_index][sample_indices])
+print("No of featues:",NUM_FEATURES,"\nProperty index:",prop_index)
 I_GEN=1
 avg_tops=np.empty(shape=(0,3))
 while I_GEN<=num_generations:
     print("Generation:",I_GEN)
-    X_train, X_valid, y_train, y_valid = helper.split_data(alldata_Train[:,0:__FEATURES], alldata_Train[:,__PROP_INDEX], 0.9)
-    X_test_ex, _, y_test_ex, _         = helper.split_data(alldata_exluded[:,0:__FEATURES], alldata_exluded[:,__PROP_INDEX], 1.0)
+    X_train, X_valid, y_train, y_valid = helper.split_data(alldata_Train[:,0:NUM_FEATURES], alldata_Train[:,prop_index], 0.9)
+    X_test_ex, _, y_test_ex, _         = helper.split_data(alldata_exluded[:,0:NUM_FEATURES], alldata_exluded[:,prop_index], 1.0)
     print("Training",len(X_train))
     print("Validation",len(X_valid))
     print("Test Excluded",len(X_test_ex))
@@ -170,11 +170,11 @@ while I_GEN<=num_generations:
 
 
     # Plot progress
-    sample_indices = np.argpartition(alldata_Train[:,__PROP_INDEX],-num_samples)[-num_samples:]
-    avg_top = np.average(alldata_Train[:,__PROP_INDEX][sample_indices])
+    sample_indices = np.argpartition(alldata_Train[:,prop_index],-num_samples)[-num_samples:]
+    avg_top = np.average(alldata_Train[:,prop_index][sample_indices])
 
-    sample_indices = np.argpartition(alldata_Random[:,__PROP_INDEX],-num_samples)[-num_samples:]
-    avg_top_random = np.average(alldata_Random[:,__PROP_INDEX][sample_indices])
+    sample_indices = np.argpartition(alldata_Random[:,prop_index],-num_samples)[-num_samples:]
+    avg_top_random = np.average(alldata_Random[:,prop_index][sample_indices])
 
     avg_tops = np.append(avg_tops,[[I_GEN,avg_top,avg_top_random]],axis=0)
     np.savetxt("./results/02-searched-design.dat",avg_tops,header=f"Generation Avg_Top{num_samples}_Model Avg_Top{num_samples}_Random")
